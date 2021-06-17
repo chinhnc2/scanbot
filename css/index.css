@@ -678,11 +678,15 @@
 .crop-navbar {}
 
 .cropping-controller {
-  background-color: #fff;
+  background-color: #f1f8fa;
   height: 100%;
 }
 
 .crop_action_bar {
   position: fixed;
   bottom: 0;
+}
+
+.scanbot-shutter-button {
+  display: none;
 }

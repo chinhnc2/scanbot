@@ -129,6 +129,13 @@ $(document).ready(async function () {
   // TAKE PHOTO
   $('#snap').click(async function (event) {
     event.preventDefault();
+    if(arrayImages.length > 2) {
+      return;
+    }
+    $(".overlay__loading").removeClass("hidden__content");
+    $('#snap').attr('disabled', 'disabled');
+    $(".btn__play").attr('disabled', 'disabled');
+    $( ".scanbot-shutter-button" ).trigger( "click" );
   });
 
   async function onDocumentDetected(e) {
@@ -142,6 +149,9 @@ $(document).ready(async function () {
       reloadDetectionResults();
     } catch (err) {
       notifyError(err);
+      $(".overlay__loading").addClass("hidden__content");
+      $('#snap').attr('disabled', 'false');
+      $(".btn__play").attr('disabled', 'false');
     }
   }
 
