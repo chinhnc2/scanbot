@@ -143,15 +143,14 @@ $(document).ready(async function () {
       results.push(e);
       const { cropped } = e;
       const blob = new Blob([cropped], {type: `image/png`});
-      const imageBitmap = await createImageBitmap(blob, { resizeWidth: 2560, resizeHeight: 1920, resizeQuality: "high"});
+      const imageBitmap = await createImageBitmap(blob);
       const canvas = document.querySelector('#canvas');
       await drawCanvas(canvas, imageBitmap);
       reloadDetectionResults();
     } catch (err) {
       notifyError(err);
       $(".overlay__loading").addClass("hidden__content");
-      $('#snap').attr('disabled', 'false');
-      $(".btn__play").attr('disabled', 'false');
+      $('#snap').attr('disabled', false);;
     }
   }
 
